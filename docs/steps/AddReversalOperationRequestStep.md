@@ -1,23 +1,28 @@
 # Add Reversal Operation Request Step
 
-## Purpose
-Step for temporary transfer.
+## Purpose  
+Creates a reversal operation request using a given operation workflow instance ID and optional form data. It can impersonate a specific user context during execution for audit/logging purposes.
 
-## Step Type
+## Step Type  
+```
 Amnil.AccessControlManagementSystem.Workflows.Steps.AddReversalOperationRequestStep, Amnil.AccessControlManagementSystem.Application
+```
 
 ## Parameters
 
 ### Inputs
-- `OperationWorkflowInstanceId` (string): The name of the NocoDB table to update.
-- `OperationForms` (JObject): A JSON object representing the data to update.
-- `ApplicationForms` (JObject): A JSON object representing the data to update
-- `CurrentUserDetail` (JObject)
 
-### Output
-- `Id` (string): The ID of the created record.
+- `OperationWorkflowInstanceId` (`string`): The ID of the original workflow instance for which a reversal operation is being initiated.
+- `OperationForms` (`JObject`, optional): Operation-related form data to be included in the reversal request.
+- `ApplicationForms` (`JObject`, optional): Application-level form data related to the reversal.
+- `CurrentUserDetail` (`JObject`, optional): Custom user context data used for impersonation during request execution.
+
+### Outputs
+
+- `OperationReversalWorkflowInstanceId` (`string`): The ID of the newly created reversal workflow instance.
 
 ## Usage Example
+
 ```json
 {
   "Id": "AddOperationRequest",
@@ -26,27 +31,29 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddReversalOperationRequestS
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "OperationForms": {
-        "userAccountForm": {
-            "userAccountIdentifier": "7002"
-        }
+      "userAccountForm": {
+        "userAccountIdentifier": "7002"
+      }
     },
     "ApplicationForms": {
-        "applicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
-        "applicationForms": {
-            "userAccountForm": {
-                "userIdentifier": "min@yopmail.com"
-            }
+      "applicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
+      "applicationForms": {
+        "userAccountForm": {
+          "userIdentifier": "min@yopmail.com"
         }
+      }
     },
     "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
-    "OperationWorkflowInstanceId": "step.Response"
+    "OperationWorkflowInstanceId": "step.OperationReversalWorkflowInstanceId"
   }
 }
 ```
 
 ## Error Handling
-- Missing or invalid `OperationWorkflowInstanceId`  
-- Incomplete `OperationForms` / `ApplicationForms`  
-- Duplicate reversal request creation attempts  
+
+- Missing or Invalid OperationWorkflowInstanceId 
+- API Call Failure
+- Unhandled Exceptions
+- Logging
