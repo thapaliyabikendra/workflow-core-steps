@@ -25,11 +25,11 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.Acces
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "ProcessPreferences",
   "Inputs": {
-    "VariableName": "userPreferences",
+    "VariableName": "\"staffId\"",
     "DefaultValue": "{}"
   },
   "Outputs": {
-    "PreferencesData": "step.Value"
+    "staffIdData": "step.VariableValue.staffId"
   }
 }
 ```

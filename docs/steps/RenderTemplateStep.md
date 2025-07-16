@@ -1,7 +1,7 @@
 # Render Template Step
 
 ## Purpose
-Renders a text or HTML template using provided data, often for notifications, emails, or document generation.
+Renders a text or HTML template using provided data, often for notifications, emails, or document generation, uses ITemplateService.
 
 ## Step Type
 Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.AccessControlManagementSystem.Application
@@ -19,17 +19,17 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.Ac
 ```json
 {
   "Id": "RenderTemplate",
-      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.AccessControlManagementSystem.Application",
-      "NextStepId": "PrintApplicationTemplate",
-      "Inputs": {
-        "TemplateName": "\"transfer\"",
-        "Model": {
-          "user": "Admin"
-        }
-      },
-      "Outputs": {
-        "RenderedContent": "step.RenderedContent"
-      }
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "PrintApplicationTemplate",
+  "Inputs": {
+    "TemplateName": "\"transfer\"",
+    "Model": {
+      "user": "Admin"
+    }
+  },
+  "Outputs": {
+    "RenderedContent": "step.RenderedContent"
+  }
 }
 ```
 

@@ -1,7 +1,7 @@
 # Increment Step
 
 ## Purpose
-Increments a numeric counter value in the workflow context.
+Increments a numeric counter value in the workflow context to perform basic arithmetic operation.
 
 ## Step Type
 ```

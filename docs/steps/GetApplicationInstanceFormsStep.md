@@ -19,15 +19,15 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationInstanceFormsS
 ## Usage Example
 ```json
 {
-      "Id": "GetApplicationFormsData",
-      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationInstanceFormsStep, Amnil.AccessControlManagementSystem.Application",
-      "NextStepId": "CheckApplicationDetails",
-      "Inputs": {
-        "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]"
-      },
-      "Outputs": {
-        "applicationDetails": "step.Response"
-      }    
+  "Id": "GetApplicationFormsData",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationInstanceFormsStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "CheckApplicationDetails",
+  "Inputs": {
+    "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]"
+  },
+  "Outputs": {
+    "applicationDetails": "step.Response"
+  }    
 }
 ```
 

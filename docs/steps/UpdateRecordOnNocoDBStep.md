@@ -18,21 +18,21 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Am
 ## Usage Example
 ```json
 {
-   "Id": "UpdateNocoDBRecordStep",
-      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
-      "NextStepId": "PrintApplicationTemplate",
-      "Inputs": {
-        "TableName": "\"FinancleRoleChangeApiRequests\"",
-        "Data": {
-          "@ApiClientName": "\"GET_MBL_APPLICATIONS_API_DUMMY_TEST\"",
-          "@WorkflowId": "",
-          "@AppTaskWorkflowId": "data[\"applicationWorkflowInstanceId\"]",
-          "@Status": true
-        }
-      },
-      "Outputs": {
-        "Id": "step.Id"
-      }
+  "Id": "UpdateNocoDBRecordStep",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "PrintApplicationTemplate",
+  "Inputs": {
+    "TableName": "\"FinancleRoleChangeApiRequests\"",
+    "Data": {
+      "@ApiClientName": "\"GET_MBL_APPLICATIONS_API_DUMMY_TEST\"",
+      "@WorkflowId": "",
+      "@AppTaskWorkflowId": "data[\"applicationWorkflowInstanceId\"]",
+      "@Status": true
+    }
+  },
+  "Outputs": {
+    "Id": "step.Id"
+  }
 }
 ```
 

@@ -19,22 +19,22 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil
 ```json
 {
   "Id": "NocoDBRecordStep",
-      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
-      "NextStepId": "PrintApplicationTemplate",
-      "Inputs": {
-        "TableName": "\"RPAJobs\"",
-        "NocoDbFilterParams": {
-          "fields": null,
-          "where": "",
-          "offset": "",
-          "limit": "",
-          "sort": "",
-          "viewId": ""
-        }
-      },
-      "Outputs": {
-        "Data": "step.Data"
-      }
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "PrintApplicationTemplate",
+  "Inputs": {
+    "TableName": "\"RPAJobs\"",
+    "NocoDbFilterParams": {
+      "fields": null,
+      "where": "",
+      "offset": "",
+      "limit": "",
+      "sort": "",
+      "viewId": ""
+    }
+  },
+  "Outputs": {
+    "Data": "step.Data"
+  }
 }
 ```
 

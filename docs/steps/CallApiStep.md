@@ -34,10 +34,12 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessCon
     }
   },
   "Outputs": {
-    "ApiResponse": "step.Response[\"data\"]"
+    "ApiResponse": "step.Response[\"data\"]",
+    "userId": "step.Response[\"data\"].userId"
   }
 }
 ```
+
 ## Error Handling
 - HTTP errors (4xx, 5xx) are properly logged and can trigger error workflows
 - Connection timeouts and network issues are handled gracefully

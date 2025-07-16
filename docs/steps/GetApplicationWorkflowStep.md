@@ -10,9 +10,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, 
 
 ### Inputs
 - `OperationWorkflowId` (string): The unique identifier of the application workflow to retrieve.
-
 - `AppName` (string): The application name.
-
 - `AppTaskName` (string): The application task name.
 
 ### Outputs
@@ -22,16 +20,16 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, 
 ```json
 {
   "Id": "GetApplicationWorkflowStep",
-      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, Amnil.AccessControlManagementSystem.Application",
-      "NextStepId": "PrintApplicationTaskId",
-      "Inputs": {
-        "OperationWorkflowId": "data[\"operationWorkflowInstanceId\"]",
-        "AppName": "\"Finacle\"",
-        "AppTaskName": "\"Finacle Test Role Change\""
-      },
-      "Outputs": {
-        "ApplicationTaskWorkflowResponse": "step.Response"
-      }
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "PrintApplicationTaskId",
+  "Inputs": {
+    "OperationWorkflowId": "data[\"operationWorkflowInstanceId\"]",
+    "AppName": "\"Finacle\"",
+    "AppTaskName": "\"Finacle Test Role Change\""
+  },
+  "Outputs": {
+    "ApplicationTaskWorkflowResponse": "step.Response"
+  }
 }
 ```
 

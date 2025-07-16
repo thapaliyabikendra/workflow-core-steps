@@ -25,7 +25,8 @@ None
   "Id": "PublishApprovalComplete",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PublishWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "FinalizeWorkflow",
-  "Inputs": {    "EventName": "\"APPROVAL_COMPLETED\"",
+  "Inputs": {    
+    "EventName": "\"APPROVAL_COMPLETED\"",
     "EventKey": "data[\"workflowInstanceId\"]",
     "EventData": {
       "requestId": "data[\"requestId\"]",
@@ -33,7 +34,6 @@ None
       "approvedAt": "DateTime.Now",
       "decision": "data[\"approvalDecision\"]"
     }
-  }
   }
 }
 ```

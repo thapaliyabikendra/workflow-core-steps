@@ -24,10 +24,10 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddNocoDBRecordStep, Amnil.A
   "Inputs": {
     "TableName": "\"RPAJobs\"",
     "Data": {
-          "RoleCode": "310",
-          "EmployeeId": "EID208",
-          "RequestFrom": "2025-03-17",
-          "RequestTo": "2025-03-21"
+      "RoleCode": "310",
+      "EmployeeId": "EID208",
+      "RequestFrom": "2025-03-17",
+      "RequestTo": "2025-03-21"
     }
   },
   "Outputs": {

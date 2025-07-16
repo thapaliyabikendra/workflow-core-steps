@@ -14,7 +14,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowsStep,
 - `OperationWorkflowId` (string): ID of the operation workflow instance to get associated application workflows for
 
 ### Outputs
-- `Response` (JObject): Object containing application workflows data including:  - Total count of workflows
+- `Response` (JObject): Object containing application workflows data including: 
+  - Total count of workflows
   - Application workflow instance details including:
     - Instance IDs
     - Current stages and status

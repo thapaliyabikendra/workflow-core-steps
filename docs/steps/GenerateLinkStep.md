@@ -26,10 +26,10 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateLinkStep, Amnil.Acce
   "Inputs": {
     "FormSlug": "add-employees",
     "Payload": {
-          "UserId": "310",
-          "WorkflowId": "96549bc9-c52e-4640-9f52-bd57652265ad",
-          "RequiresLogin": true,
-          "Expiration": "2025-03-21"
+      "UserId": "310",
+      "WorkflowId": "96549bc9-c52e-4640-9f52-bd57652265ad",
+      "RequiresLogin": true,
+      "Expiration": "2025-03-21"
     }
   },
   "Outputs": {
