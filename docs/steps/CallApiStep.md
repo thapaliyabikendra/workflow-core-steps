@@ -15,6 +15,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessCon
   - Contains HTTP request details like URL, method, headers, body
 - `ApiClientName` (string): Name of the API client to be used
   - Must match a configured API client in the system
+- `CurrentUserDetail` (JObject, Optional): User data
 
 ### Outputs
 - `Response` (JObject): Contains the API response after execution
@@ -28,10 +29,11 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessCon
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "ProcessApiResponse",
   "Inputs": {
-    "ApiClientName": "EXTERNAL_SERVICE_CLIENT",
     "ApiRequest": {
       "name": "Mike"
-    }
+    },
+    "ApiClientName": "EXTERNAL_SERVICE_CLIENT",
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
     "ApiResponse": "step.Response[\"data\"]",

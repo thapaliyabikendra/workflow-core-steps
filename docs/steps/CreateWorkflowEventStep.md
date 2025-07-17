@@ -14,7 +14,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amn
 - `OperationWorkflowInstanceId` (string): ID of the operation workflow instance
 - `ApplicationWorkflowInstanceId` (string): ID of the application workflow instance
 - `EventName` (string): Name of the event to create
-- `EventData` (JObject): Additional data associated with the event
+- `EventData` (JObject, Optional): Additional data associated with the event
+- `CurrentUserDetail` (JObject, Optional): Context User Data
 
 ### Outputs
 - `WorkflowEventId` (string): The ID of the created workflow event
