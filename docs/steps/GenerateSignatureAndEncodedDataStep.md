@@ -11,31 +11,34 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateSignatureAndEncodedD
 ## Parameters
 
 ### Inputs
-- `Data` (object): Data to be signed and encoded
-- `SigningKey` (string): Key used for generating signature
-- `EncodingType` (string, optional): Type of encoding to use (default: "Base64")
+- `FunctionName` (string): Identifier for the remote function (e.g., "SolChange").
+- `FileName` (string): Name of the .pem file containing the RSA private key, located in /app/Files/.
+- `ApplicationFormData` (JObject): JSON object expected to contain a SolChangeForm sub-object with necessary fields.
+- `ApplicationWorkflowInstanceId` (string): The unique identifier for the workflow instance.
+- `TransactionId` (string): The unique transaction identifier.
 
 ### Outputs
-- `Signature` (string): Generated signature
-- `EncodedData` (string): Encoded data
-- `Timestamp` (string): Timestamp of signature generation
+- `EncodedRequestData` (JObject): The generated object with the following structure:
+  - `FunctionName`: Same as input.
+  - `Data`: Base64-encoded version of the serialized request.
+  - `Signature`: RSA SHA256 signature of the payload.
 
 ## Usage Example
 
 ```json
 {
-  "Id": "SignAndEncodeRequest",
+  "Id": "GenerateSolChangeEncodedData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateSignatureAndEncodedDataStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "SendToExternalSystem",
+  "NextStepId": "SolAPICallStep",
   "Inputs": {
-    "Data": "data[\"requestPayload\"]",
-    "SigningKey": "\"YOUR_SIGNING_KEY\"",
-    "EncodingType": "\"Base64\""
+    "FunctionName": "\"SolChange\"",
+    "TransactionId": "data[\"TransactionId\"]",
+    "FileName": "\"PrivateKey_20241224125743.pem\"",
+    "ApplicationFormData": "data[\"applicationFormData\"]",
+    "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]"
   },
   "Outputs": {
-    "RequestSignature": "step.Signature",
-    "EncodedPayload": "step.EncodedData",
-    "SignedAt": "step.Timestamp"
+    "EncodedRequestData": "step.EncodedRequestData"
   }
 }
 ```
