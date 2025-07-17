@@ -12,7 +12,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.Acce
 
 ### Inputs
 - `Message` (string): The message to be logged
-- `LogLevel` (string, optional): Log level (e.g., "Information", "Warning", "Error")
 
 ### Outputs
 None
@@ -26,7 +25,6 @@ None
   "NextStepId": "ContinueWorkflow",
   "Inputs": {
     "Message": "\"Workflow status: \" + data[\"workflowStatus\"] + \" for ApplicationId: \" + data[\"applicationId\"]",
-    "LogLevel": "\"Information\""
   }
 }
 ```
