@@ -33,7 +33,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amn
     "EventData": {
       "status": "submitted",
       "timestamp": "DateTime.Now"
-    }
+    },
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
     "CreatedEventId": "step.WorkflowEventId"

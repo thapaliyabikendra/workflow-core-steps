@@ -9,8 +9,9 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddNocoDBRecordStep, Amnil.A
 ## Parameters
 
 ### Inputs
-- `TableName` (string): Name of the NocoDB table.
-- `Data` (JObject): Data to insert as a new record.
+- `TableName` (`string`): Name of the NocoDB table.
+- `Data` (`JObject`): Data to insert as a new record.
+- `CurrentUserDetail` (`JObject`, Optional): JSON object with user context to impersonate while inserting.
 
 ### Outputs
 - `Id` (string): The ID of the newly created record.
@@ -27,7 +28,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddNocoDBRecordStep, Amnil.A
       "EmployeeId": "EID208",
       "RequestFrom": "2025-03-17",
       "RequestTo": "2025-03-21"
-    }
+    },
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
     "Id": "step.Id"

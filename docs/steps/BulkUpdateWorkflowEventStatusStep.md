@@ -13,8 +13,9 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.BulkUpdateWorkflowEventStatu
 ### Inputs
 - `WorkflowEvents` (List<UpdateWorkflowEventDto>): List of events to update
   - Each item contains:
-    - `WorkflowEventId` (Guid): ID of the event
-    - `EventData` (JObject): Updated event data
+    - `WorkflowEventId` (`Guid`): ID of the event
+    - `EventData` (`JObject`): Updated event data
+- `CurrentUserDetail` (`JObject`, optional): Current user context for impersonation during update
 
 ### Outputs
 None
@@ -41,7 +42,8 @@ None
           "timestamp": "DateTime.Now"
         }
       }
-    ]
+    ],
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   }
 }
 ```

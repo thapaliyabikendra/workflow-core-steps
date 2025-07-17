@@ -11,8 +11,9 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.DeleteRecordOnNocoDBStep, Am
 ## Parameters
 
 ### Inputs
-- `TableName` (string): Name of the NocoDB table.
-- `Id` (string): ID of the record to delete.
+- `TableName` (`string`): Name of the NocoDB table.
+- `Id` (`string`): ID of the record to delete.
+- `CurrentUserDetail` (`JObject`, optional): Current user context for impersonation during deletion
 
 ### Outputs
 - `Data` (string): ID of the record deleted.
@@ -24,7 +25,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.DeleteRecordOnNocoDBStep, Am
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.DeleteRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
   "Inputs": {
     "TableName": "\"Customers\"",
-    "Id": "Vm"
+    "Id": "Vm",
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
     "Response": "step.Data"

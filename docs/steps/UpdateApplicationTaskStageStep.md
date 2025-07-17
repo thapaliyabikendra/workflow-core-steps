@@ -15,6 +15,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateApplicationTaskStageSt
 - `StageName` (string): Name of the new stage
 - `SubStageName` (string, optional): Name of the sub-stage
 - `Remarks` (string, optional): Additional remarks about the stage change
+- `CurrentUserDetail` (JObject, optional): Current user context for impersonation during update
 
 ### Outputs
 None
@@ -29,7 +30,8 @@ None
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "StageName": "\"APPROVAL_PENDING\"",
     "SubStageName": "\"MANAGER_APPROVAL\"",
-    "Remarks": "\"Application sent for manager approval\""
+    "Remarks": "\"Application sent for manager approval\"",
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   }
 }
 ```

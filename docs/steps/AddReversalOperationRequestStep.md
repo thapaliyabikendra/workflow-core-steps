@@ -15,7 +15,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddReversalOperationRequestS
 - `OperationWorkflowInstanceId` (`string`): The ID of the original workflow instance for which a reversal operation is being initiated.
 - `OperationForms` (`JObject`, optional): Operation-related form data to be included in the reversal request.
 - `ApplicationForms` (`JObject`, optional): Application-level form data related to the reversal.
-- `CurrentUserDetail` (`JObject`): Custom user context data used for impersonation during request execution.
+- `CurrentUserDetail` (`JObject`, optional): Custom user context data used for impersonation during request execution.
 
 ### Outputs
 

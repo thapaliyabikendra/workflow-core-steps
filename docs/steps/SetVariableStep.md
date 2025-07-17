@@ -15,6 +15,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.SetVariableStep, Amnil.Acces
 - `VariableName` (string): Name of the variable to set
 - `VariableValue` (object): Value to store in the variable
 - `Scope` (string, optional): Scope of the variable (e.g., "Workflow", "Instance")
+- `CurrentUserDetail` (JObject, optional): Current user context for impersonation during variable save
 
 ### Outputs
 None
@@ -28,7 +29,8 @@ None
   "Inputs": {
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "VariableName": "\"ApprovalStatus\"",
-    "VariableValue": "data[\"approvalStatus\"]"
+    "VariableValue": "data[\"approvalStatus\"]",
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   }
 }
 ```

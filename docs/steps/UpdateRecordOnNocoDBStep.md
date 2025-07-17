@@ -11,6 +11,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Am
 ### Inputs
 - `TableName` (string): The name of the NocoDB table.
 - `Data` (object): The data to update in the record.
+- `CurrentUserDetail` (JObject, optional): Detailed user context for impersonation during update.
 
 ### Outputs
 - `Id` (string): The record id of the data updated.
@@ -27,7 +28,8 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Am
       "@WorkflowId": "",
       "@AppTaskWorkflowId": "data[\"applicationWorkflowInstanceId\"]",
       "@Status": true
-    }
+    },
+    "CurrentUserDetail": "data[\"currentUserDetail\"]"
   },
   "Outputs": {
     "Id": "step.Id"
