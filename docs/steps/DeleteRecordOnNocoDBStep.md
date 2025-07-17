@@ -22,7 +22,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.DeleteRecordOnNocoDBStep, Am
 {
   "Id": "DeleteNocoDBRecord",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.DeleteRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ContinueProcess",
   "Inputs": {
     "TableName": "\"Customers\"",
     "Id": "Vm"

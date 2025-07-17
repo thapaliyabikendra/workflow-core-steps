@@ -22,7 +22,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateLinkStep, Amnil.Acce
 {
   "Id": "GenerateLink",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateLinkStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "SendLink",
   "Inputs": {
     "FormSlug": "add-employees",
     "Payload": {

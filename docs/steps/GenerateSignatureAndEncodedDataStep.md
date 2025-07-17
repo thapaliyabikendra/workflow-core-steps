@@ -29,7 +29,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateSignatureAndEncodedD
 {
   "Id": "GenerateSolChangeEncodedData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateSignatureAndEncodedDataStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "SolAPICallStep",
   "Inputs": {
     "FunctionName": "\"SolChange\"",
     "TransactionId": "data[\"TransactionId\"]",

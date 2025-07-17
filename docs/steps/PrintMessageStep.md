@@ -22,7 +22,6 @@ None
 {
   "Id": "LogWorkflowStatus",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ContinueWorkflow",
   "Inputs": {
     "Message": "\"Workflow status: \" + data[\"workflowStatus\"] + \" for ApplicationId: \" + data[\"applicationId\"]",
   }

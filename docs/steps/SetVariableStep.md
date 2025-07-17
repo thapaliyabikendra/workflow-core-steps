@@ -25,7 +25,6 @@ None
 {
   "Id": "StoreUserData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.SetVariableStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessUserData",
   "Inputs": {
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "VariableName": "\"ApprovalStatus\"",

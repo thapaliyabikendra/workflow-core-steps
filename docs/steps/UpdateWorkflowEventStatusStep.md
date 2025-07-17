@@ -23,7 +23,6 @@ None
 {
   "Id": "UpdateEventStatus",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateWorkflowEventStatusStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessNextStep",
   "Inputs": {
     "WorkflowEventId": "data[\"currentEventId\"]",
     "EventData": {

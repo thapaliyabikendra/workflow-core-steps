@@ -26,7 +26,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GeneratePasswordStep, Amnil.
 {
   "Id": "GenerateRandomPassword",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GeneratePasswordStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "UsePasswordInNextStep",
   "Inputs": {
     "Length": 12,
     "IncludeLowercase": true,

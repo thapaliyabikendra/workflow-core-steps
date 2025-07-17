@@ -28,7 +28,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowsStep,
 {
   "Id": "RetrieveApplicationWorkflows",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowsStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessWorkflows",
   "Inputs": {
     "OperationWorkflowId": "data[\"operationWorkflowId\"]"
   },

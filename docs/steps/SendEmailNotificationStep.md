@@ -24,7 +24,6 @@ None
 {
   "Id": "SendApprovalRequest",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.SendEmailNotificationStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "WaitForResponse",
   "Inputs": {
     "Email": "data[\"currentUserDetail\"].Email",
     "Subject": "\"Employee Return Notification\"",

@@ -27,7 +27,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddReversalOperationRequestS
 {
   "Id": "AddOperationRequest",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.AddReversalOperationRequestStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "PrintApplicationTemplate",
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "OperationForms": {

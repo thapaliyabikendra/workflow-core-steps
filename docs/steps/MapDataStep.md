@@ -22,7 +22,6 @@ None
 {
   "Id": "MapIntermediateData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.MapDataStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "NextBusinessStep",
   "Inputs": {
     "Data": {
       "userId": "data[\"currentUser\"].id",

@@ -24,7 +24,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.Acces
 {
   "Id": "GetUserPreferences",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessPreferences",
   "Inputs": {
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "VariableName": "\"staffId\"",

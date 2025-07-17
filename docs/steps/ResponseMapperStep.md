@@ -22,7 +22,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.ResponseMapperStep, Amnil.Ac
 {
   "Id": "MapApiResponse",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.ResponseMapperStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessMappedData",
   "Inputs": {    
     "ApiResponse": "data[\"rawApiResponse\"]"
   },

@@ -17,7 +17,6 @@ Waits for an event to occur before proceeding.
 {
   "Id": "WaitForEvent",
   "StepType": "WorkflowCore.Primitives.WaitFor, WorkflowCore",
-  "NextStepId": "ProcessEvent",
   "Inputs": {
     "EventName": "\"SOME_EVENT\"",
     "EventKey": "data[\"eventKey\"]",

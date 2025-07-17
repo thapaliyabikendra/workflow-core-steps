@@ -25,7 +25,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetWorkflowEventStep, Amnil.
 {
   "Id": "CheckApprovalStatus",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessApprovalResult",
   "Inputs": {
     "OperationWorkflowEventId": "data[\"operationWorkflowInstanceId\"]",
     "IncludeHistory": true

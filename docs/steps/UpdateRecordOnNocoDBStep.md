@@ -20,7 +20,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Am
 {
   "Id": "UpdateNocoDBRecordStep",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "PrintApplicationTemplate",
   "Inputs": {
     "TableName": "\"FinancleRoleChangeApiRequests\"",
     "Data": {

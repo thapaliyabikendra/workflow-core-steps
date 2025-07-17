@@ -25,7 +25,6 @@ None
 {
   "Id": "BulkUpdateEvents",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.BulkUpdateWorkflowEventStatusStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ContinueProcess",
   "Inputs": {
     "WorkflowEvents": [
       {

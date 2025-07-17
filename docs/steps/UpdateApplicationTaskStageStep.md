@@ -25,7 +25,6 @@ None
 {
   "Id": "UpdateTaskToApprovalStage",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateApplicationTaskStageStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "NotifyApprovers",
   "Inputs": {
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "StageName": "\"APPROVAL_PENDING\"",

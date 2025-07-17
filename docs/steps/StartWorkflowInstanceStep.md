@@ -22,7 +22,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.StartWorkflowInstanceStep, A
 {
   "Id": "StartApplicationWorkflow",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.StartWorkflowInstanceStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessStartedWorkflow",
   "Inputs": {
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]"
   },

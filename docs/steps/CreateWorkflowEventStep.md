@@ -26,7 +26,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amn
 {
   "Id": "CreateNewWorkflowEvent",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessEvent",
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",

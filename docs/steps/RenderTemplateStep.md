@@ -20,7 +20,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.Ac
 {
   "Id": "RenderTemplate",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.RenderTemplateStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "PrintApplicationTemplate",
   "Inputs": {
     "TemplateName": "\"transfer\"",
     "Model": {

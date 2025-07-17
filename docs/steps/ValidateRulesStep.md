@@ -27,7 +27,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.ValidateRulesStep, Amnil.Acc
 {
   "Id": "ValidateTransferRequest",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.ValidateRulesStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessValidRequest",
   "Inputs": {
     "RuleSet": "\"TransferRequestRules\"",
     "InputData": "data[\"transferRequest\"]",

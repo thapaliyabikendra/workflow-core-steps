@@ -24,7 +24,6 @@ None
 {
   "Id": "PublishApprovalComplete",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PublishWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "FinalizeWorkflow",
   "Inputs": {    
     "EventName": "\"APPROVAL_COMPLETED\"",
     "EventKey": "data[\"workflowInstanceId\"]",

@@ -20,7 +20,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.AddNocoDBRecordStep, Amnil.A
 {
   "Id": "AddRecordToNocoDB",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.AddNocoDBRecordStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "EndWorkflow",
   "Inputs": {
     "TableName": "\"RPAJobs\"",
     "Data": {

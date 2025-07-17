@@ -24,7 +24,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.IncrementStep, Amnil.AccessC
 {
   "Id": "IncrementRetryCount",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.IncrementStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "CheckRetryLimit",
   "Inputs": {
     "VariableName": "retryCount",
     "IncrementBy": 1,

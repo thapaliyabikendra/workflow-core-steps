@@ -21,7 +21,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationInstanceFormsS
 {
   "Id": "GetApplicationFormsData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationInstanceFormsStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "CheckApplicationDetails",
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]"
   },

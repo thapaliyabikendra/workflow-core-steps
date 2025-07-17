@@ -21,7 +21,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, 
 {
   "Id": "GetApplicationWorkflowStep",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetApplicationWorkflowStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "PrintApplicationTaskId",
   "Inputs": {
     "OperationWorkflowId": "data[\"operationWorkflowInstanceId\"]",
     "AppName": "\"Finacle\"",

@@ -24,7 +24,6 @@ None
 {
   "Id": "WaitForProcessing",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.SleepStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "CheckProcessStatus",
   "Inputs": {
     "Duration": "\"00:00:30\"",
     "Reason": "\"Waiting for external system to process the request\""

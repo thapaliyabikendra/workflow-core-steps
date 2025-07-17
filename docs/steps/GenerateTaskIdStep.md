@@ -22,7 +22,6 @@ None
 {
   "Id": "GenerateNewTaskId",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GenerateTaskIdStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "ProcessTask",
   "Outputs": {
     "GeneratedId": "step.TaskId"
   }

@@ -20,7 +20,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil
 {
   "Id": "NocoDBRecordStep",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "PrintApplicationTemplate",
   "Inputs": {
     "TableName": "\"RPAJobs\"",
     "NocoDbFilterParams": {

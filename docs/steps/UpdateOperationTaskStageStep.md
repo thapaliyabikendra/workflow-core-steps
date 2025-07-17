@@ -25,7 +25,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateOperationTaskStageStep
 {
   "Id": "UpdateOperationStage",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateOperationTaskStageStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "CompleteWorkflow",
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
