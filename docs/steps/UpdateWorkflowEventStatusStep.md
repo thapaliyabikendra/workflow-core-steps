@@ -12,7 +12,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateWorkflowEventStatusSte
 
 ### Inputs
 - `WorkflowEventId` (string): ID of the workflow event to update
-- `EventData` (JObject): Updated event data
+- `EventData` (JObject, Optional): Updated event data
 
 ### Outputs
 None

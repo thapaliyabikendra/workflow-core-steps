@@ -11,14 +11,15 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.ValidateRulesStep, Amnil.Acc
 ## Parameters
 
 ### Inputs
-- `RuleSet` (string): Name of the rule set to validate
+- `RuleName` (string): Name of the rule set to validate
 - `InputData` (object): Data to validate against rules
 - `Parameters` (object, optional): Additional parameters for rule evaluation
 
 ### Outputs
-- `IsValid` (boolean): Whether validation passed
-- `ValidationErrors` (array): List of validation errors if any
-- `ValidationResult` (object): Detailed validation results
+- `Response` (object): JSON object containing validation results:
+  - `IsValid` (boolean): Whether validation passed
+  - `ValidationErrors` (array): List of validation errors if any
+  - `ValidationResult` (object): Detailed validation results
 
 ## Usage Example
 
@@ -36,8 +37,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.ValidateRulesStep, Amnil.Acc
     }
   },
   "Outputs": {
-    "RequestIsValid": "step.IsValid",
-    "ValidationIssues": "step.ValidationErrors"
+    "Response": "step.Response[\"isValidated\"]"
   }
 }
 ```

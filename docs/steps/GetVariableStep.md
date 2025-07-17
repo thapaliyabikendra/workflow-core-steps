@@ -11,6 +11,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.Acces
 ## Parameters
 
 ### Inputs
+- `ApplicationWorkflowInstanceId` (string): The unique identifier for the workflow instance.
 - `VariableName` (string): Name of the variable to retrieve
 - `DefaultValue` (object, optional): Default value if variable is not found
 
@@ -25,6 +26,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.Acces
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetVariableStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "ProcessPreferences",
   "Inputs": {
+    "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
     "VariableName": "\"staffId\"",
     "DefaultValue": "{}"
   },

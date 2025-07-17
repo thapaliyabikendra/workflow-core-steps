@@ -14,10 +14,10 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateOperationTaskStageStep
 - `OperationWorkflowInstanceId` (string): ID of the operation workflow instance
 - `ApplicationWorkflowInstanceId` (string): ID of the associated application workflow instance
 - `Remarks` (string, optional): Additional remarks about the stage change
+- `CurrentUserId` (string, optional): The unique identifier of the user performing the update.
 
 ### Outputs
 - `OperationStatus` (string): Updated status of the operation
-- `Success` (boolean): Indicates if the stage was updated successfully
 
 ## Usage Example
 
@@ -29,11 +29,11 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateOperationTaskStageStep
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
-    "Remarks": "\"Operation completed successfully\""
+    "Remarks": "\"Operation completed successfully\"",
+    "CurrentUserId": "data[\"currentUserId\"]"
   },
   "Outputs": {
-    "Status": "step.OperationStatus",
-    "Updated": "step.Success"
+    "OperationStatus": "step.OperationStatus",
   }
 }
 ```

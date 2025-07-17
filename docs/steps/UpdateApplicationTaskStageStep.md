@@ -17,8 +17,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateApplicationTaskStageSt
 - `Remarks` (string, optional): Additional remarks about the stage change
 
 ### Outputs
-- `Success` (boolean): Indicates if the stage was updated successfully
-- `StageId` (string): ID of the new stage
+None
 
 ## Usage Example
 
@@ -32,10 +31,6 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateApplicationTaskStageSt
     "StageName": "\"APPROVAL_PENDING\"",
     "SubStageName": "\"MANAGER_APPROVAL\"",
     "Remarks": "\"Application sent for manager approval\""
-  },
-  "Outputs": {
-    "StageUpdated": "step.Success",
-    "NewStageId": "step.StageId"
   }
 }
 ```
@@ -43,4 +38,4 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.UpdateApplicationTaskStageSt
 ## Error Handling
 - Validates stage transitions
 - Handles concurrent stage updates
-- Maintains stage history for audit
+- Throws exception to halt workflow execution if error occurs.

@@ -11,12 +11,13 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.SetVariableStep, Amnil.Acces
 ## Parameters
 
 ### Inputs
+- `ApplicationWorkflowInstanceId` (string): The unique identifier for the workflow instance.
 - `VariableName` (string): Name of the variable to set
-- `Value` (object): Value to store in the variable
+- `VariableValue` (object): Value to store in the variable
 - `Scope` (string, optional): Scope of the variable (e.g., "Workflow", "Instance")
 
 ### Outputs
-- `Success` (boolean): Indicates if the variable was set successfully
+None
 
 ## Usage Example
 
@@ -26,12 +27,9 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.SetVariableStep, Amnil.Acces
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.SetVariableStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "ProcessUserData",
   "Inputs": {
-    "VariableName": "userData",
-    "Value": {
-      "userId": "data[\"currentUserId\"]",
-      "timestamp": "DateTime.Now"
-    },
-    "Scope": "Instance"
+    "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
+    "VariableName": "\"ApprovalStatus\"",
+    "VariableValue": "data[\"approvalStatus\"]"
   }
 }
 ```

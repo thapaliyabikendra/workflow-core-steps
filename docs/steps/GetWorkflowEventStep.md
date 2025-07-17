@@ -11,13 +11,13 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetWorkflowEventStep, Amnil.
 ## Parameters
 
 ### Inputs
-- `WorkflowEventId` (string): ID of the workflow event to retrieve
+- `OperationWorkflowEventId` (string): The unique identifier of the application workflow to retrieve
 - `IncludeHistory` (boolean, optional): Whether to include event history
 
 ### Outputs
-- `EventData` (object): The retrieved event data
-- `EventStatus` (string): Current status of the event
-- `EventHistory` (array, optional): Event status history if requested
+- `Response` (object): JSON object containing:
+  - `totalCount` (integer): Number of events retrieved.
+  - `data` (array): List of workflow event DTOs.
 
 ## Usage Example
 
@@ -27,13 +27,11 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetWorkflowEventStep, Amnil.
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.GetWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "ProcessApprovalResult",
   "Inputs": {
-    "WorkflowEventId": "data[\"approvalEventId\"]",
+    "OperationWorkflowEventId": "data[\"operationWorkflowInstanceId\"]",
     "IncludeHistory": true
   },
   "Outputs": {
-    "ApprovalData": "step.EventData",
-    "ApprovalStatus": "step.EventStatus",
-    "StatusHistory": "step.EventHistory"
+    "Response": "step.Response"
   }
 }
 ```

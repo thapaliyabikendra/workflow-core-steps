@@ -11,18 +11,12 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.SendEmailNotificationStep, A
 ## Parameters
 
 ### Inputs
-- `To` (string/array): Email recipient(s)
-- `Subject` (string): Email subject
-- `Body` (string): Email body content
-- `Template` (string, optional): Email template name
-- `TemplateData` (object, optional): Data for template rendering
-- `Cc` (string/array, optional): Carbon copy recipients
-- `Bcc` (string/array, optional): Blind carbon copy recipients
-- `Attachments` (array, optional): File attachments
+- `Email` (string): Recipient email address.
+- `Subject` (string): Email subject line.
+- `Body` (string): Email message body content.-
 
 ### Outputs
-- `Sent` (boolean): Whether email was sent successfully
-- `MessageId` (string): Unique identifier of sent email
+None
 
 ## Usage Example
 
@@ -32,19 +26,9 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.SendEmailNotificationStep, A
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.SendEmailNotificationStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "WaitForResponse",
   "Inputs": {
-    "To": "data[\"approverEmail\"]",
-    "Subject": "\"New Approval Request\"",
-    "Template": "\"ApprovalRequestEmail\"",
-    "TemplateData": {
-      "requestId": "data[\"requestId\"]",
-      "requestedBy": "data[\"requesterName\"]",
-      "requestDetails": "data[\"requestSummary\"]",
-      "approvalLink": "data[\"approvalUrl\"]"
-    }
-  },
-  "Outputs": {
-    "EmailSent": "step.Sent",
-    "NotificationId": "step.MessageId"
+    "Email": "data[\"currentUserDetail\"].Email",
+    "Subject": "\"Employee Return Notification\"",
+    "Body": "\"The employee return status is not on time. Please check the details.\""
   }
 }
 ```
