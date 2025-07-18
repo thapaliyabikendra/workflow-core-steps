@@ -1,4 +1,4 @@
-# Business Logic
+## Business Logic
 
 1. Print `"Requested - Task Id: <applicationWorkflowInstanceId>"`.
 2. Update the application stage to `REQUESTED` with `"Approval Requested for task id: <applicationWorkflowInstanceId>"`
@@ -27,6 +27,7 @@
 11. Log `"Workflow {OperationStatus}, for ApplicationWorkflowInstanceId: {applicationWorkflowInstanceId}"`.
 12. End the workflow.
 
+## Workflow Definition
 ```json
 {
   "Id": "PermanentEmployeeTransferWorkflowWithManualAction",
