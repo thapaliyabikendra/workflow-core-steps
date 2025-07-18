@@ -4,45 +4,45 @@
 2. Retrieve application form data using `operationWorkflowInstanceId`.
 3. Validate application data by calling the rules engine (`GETAPPLICATIONFORMDATAVALIDATIONCHECK`) with `applicationDetails`.
 4. Check the validation result:
-   - If **true** (valid), continue to the approval process and update stage to `PROCESSING`:
-    - Retrieve final application forms using `operationWorkflowInstanceId`.
-    - Log final application details.
-    - For each application form:
-        - Start a new workflow instance.
-    - Update application stage to `COMPLETED → APPLICATION_ACTION_SUCCESS`.
-    - Update operation stage and log `"Operation Workflow has completed"`.
-    - End the workflow.
-   - If **false** (invalid):
-    - Update application stage to `REQUESTED → APPROVAL_REQUESTED`.
-    - Proceed to get project manager user ID.
-    - Call the API `GET_PM_USERS_API` with initiator’s email to get `pmUserId`.
-    - Call the API `ROLE_CHANGE_API_CREATE` with required data:
-        - Parameters: `userId`, `processId`, `taskId`, `workflowId`, `employeeId`, `employeeName`, `currentFunctionalTitle`, `newFunctionalTitle`, and the full role change object.
-    - If API creation is successful, call `APPROVAL_FORWARD_CASE_API` using the returned `appUid`.
-    - Update application stage to `PROCESSING → APPROVAL_REQUEST_IN_PROGRESS`.
-    - Create a workflow event `RecommendChainRoleChangeApprovalResponseEvent` and wait for a response tied to `applicationWorkflowInstanceId`.
-    - Upon receiving the response:
-        - Log the received event data.
-    - Check RoleChangeApprovalResponseStatus:
-        - If **rejected**:
-            - Update application stage to `FAILED → CHECKER_REJECTED`.
-            - Send an email notification to the initiator.
-            - update application stage to `FAILED → APPLICATION_ACTION_FAILED`.
-            - Update operation stage and log `"Operation Workflow has completed"`.
-            - End the workflow.
-        - If **approved**:
-            - Check if this was the last approver.
-            - If **final approver**:
-                - Log `"Recommend Chain Completed"` with `Application Details`.
-                - Retrieve final application forms using `operationWorkflowInstanceId`.
-                - Log final application details.
-                - For each application form:
-                    - Start a new workflow instance.
-                - Update application stage to `COMPLETED → APPLICATION_ACTION_SUCCESS`.
+    - If **true** (valid), continue to the approval process and update stage to `PROCESSING`:
+        - Retrieve final application forms using `operationWorkflowInstanceId`.
+        - Log final application details.
+        - For each application form:
+            - Start a new workflow instance.
+        - Update application stage to `COMPLETED → APPLICATION_ACTION_SUCCESS`.
+        - Update operation stage and log `"Operation Workflow has completed"`.
+        - End the workflow.
+    - If **false** (invalid):
+        - Update application stage to `REQUESTED → APPROVAL_REQUESTED`.
+        - Proceed to get project manager user ID.
+        - Call the API `GET_PM_USERS_API` with initiator’s email to get `pmUserId`.
+        - Call the API `ROLE_CHANGE_API_CREATE` with required data:
+            - Parameters: `userId`, `processId`, `taskId`, `workflowId`, `employeeId`, `employeeName`, `currentFunctionalTitle`, `newFunctionalTitle`, and the full role change object.
+        - If API creation is successful, call `APPROVAL_FORWARD_CASE_API` using the returned `appUid`.
+        - Update application stage to `PROCESSING → APPROVAL_REQUEST_IN_PROGRESS`.
+        - Create a workflow event `RecommendChainRoleChangeApprovalResponseEvent` and wait for a response tied to `applicationWorkflowInstanceId`.
+        - Upon receiving the response:
+            - Log the received event data.
+        - Check RoleChangeApprovalResponseStatus:
+            - If **rejected**:
+                - Update application stage to `FAILED → CHECKER_REJECTED`.
+                - Send an email notification to the initiator.
+                - update application stage to `FAILED → APPLICATION_ACTION_FAILED`.
                 - Update operation stage and log `"Operation Workflow has completed"`.
                 - End the workflow.
-            - If **not last**:
-                - Go to `CreateRecommendChainRoleChangeApprovalEvent` to create workflow event `RecommendChainRoleChangeApprovalResponseEvent`and run in loop.
+            - If **approved**:
+                - Check if this was the last approver.
+                - If **final approver**:
+                    - Log `"Recommend Chain Completed"` with `Application Details`.
+                    - Retrieve final application forms using `operationWorkflowInstanceId`.
+                    - Log final application details.
+                    - For each application form:
+                        - Start a new workflow instance.
+                    - Update application stage to `COMPLETED → APPLICATION_ACTION_SUCCESS`.
+                    - Update operation stage and log `"Operation Workflow has completed"`.
+                    - End the workflow.
+                - If **not last**:
+                    - Go to `CreateRecommendChainRoleChangeApprovalEvent` to create workflow event `RecommendChainRoleChangeApprovalResponseEvent`and run in loop.
 
 ## Workflow Definition
 ```json
