@@ -10,7 +10,13 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.GetRecordOnNocoDBStep, Amnil
 
 ### Inputs
 - `TableName` (string): The name of the NocoDB table.
-- `NocoDbFilterParams` (object): The filter criteria to apply when retrieving records.
+- `NocoDbFilterParams` (object): The filter criteria to apply when retrieving records: 
+  - `fields`(`string` or `null`): Specific fields to retrieve from the record. null will fetch all fields.
+  - `where` (``string`): Conditional filter in NocoDB syntax.
+  - `offset` (`string`): Used for pagination. Skips the specified number of records.
+  - `limit` (`string`): Limits the number of records returned.
+  - `sort` (`string`): Sorting criteria
+  - `viewId` (string): View identifier, if applicable.
 
 ### Outputs
 - `Data` (JObject): The retrieved record(s) matching the filter.
