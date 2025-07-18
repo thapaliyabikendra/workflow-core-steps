@@ -1,7 +1,8 @@
 ## Business Logic
-- Log a message with the requested task ID from `recordData`.
-- Update the record in the `FinancleRoleChangeApiRequests` table to set `WorkflowStage` as `PROCESSING`.
-- Call the API client named `GET_MBL_APPLICATIONS_API_DUMMY_TEST` with `employeeName`, `roleCode`, and `roleName` taken from `recordData`.
+
+1. Log a message with the requested task ID from `recordData`.
+2. Update the record in the `FinancleRoleChangeApiRequests` table to set `WorkflowStage` as `PROCESSING`.
+3. Call the API client named `GET_MBL_APPLICATIONS_API_DUMMY_TEST` with `employeeName`, `roleCode`, and `roleName` taken from `recordData`.
 4. Check the API response::
     - If `true`, update the `WorkflowStage` of the record to `COMPLETED`.
     - If `false`, update the `WorkflowStage` of the record to `FAILED`.
@@ -9,6 +10,7 @@
 6. End the workflow.
 
 ## Workflow Definition
+
 ```json
 {
   "Id": "RetryOperationWorkflow",
@@ -84,4 +86,3 @@
     }
   ]
 }
-```

@@ -1,18 +1,18 @@
 ## Temporary Transfer Approval Workflow Business Logic
 
-- Log a message indicating the start of the temporary transfer request with the employee ID.
-- Update the application workflow stage to `PROCESSING` and the sub-stage to `TRANSFER_REQUESTED` with a remark indicating the processing status.
-- Call an external API named `TRANSFER_APPROVAL_API` passing dynamic data:
+1. Log a message indicating the start of the temporary transfer request with the employee ID.
+2. Update the application workflow stage to `PROCESSING` and the sub-stage to `TRANSFER_REQUESTED` with a remark indicating the processing status.
+3. Call an external API named `TRANSFER_APPROVAL_API` passing dynamic data:
     - `employeeId`
     - `transferDetails`
-- Evaluate the API response:
+4. Evaluate the API response:
     - If `data.success == true`:
         - Update the application stage to `COMPLETED` and sub-stage to `TRANSFER_APPROVED` with a success remark.
         - Log a message confirming the transfer approval with the employee ID.
     - Else:
         - Update the application stage to `FAILED` and sub-stage to `TRANSFER_DENIED` with a failure remark.
         - Log a message indicating transfer failure with the employee ID.
-- End the workflow.
+5. End the workflow.
 
 ## Workflow
 

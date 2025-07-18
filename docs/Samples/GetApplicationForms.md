@@ -45,6 +45,7 @@
                     - Go to `CreateRecommendChainRoleChangeApprovalEvent` to create workflow event `RecommendChainRoleChangeApprovalResponseEvent`and run in loop.
 
 ## Workflow Definition
+
 ```json
 {
   "Id": "GetApplicationsForm",
