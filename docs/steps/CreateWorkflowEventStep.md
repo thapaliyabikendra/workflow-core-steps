@@ -26,6 +26,7 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amn
 {
   "Id": "CreateNewWorkflowEvent",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "WaitForNewWorkflowEvent",
   "Inputs": {
     "OperationWorkflowInstanceId": "data[\"operationWorkflowInstanceId\"]",
     "ApplicationWorkflowInstanceId": "data[\"applicationWorkflowInstanceId\"]",
@@ -38,6 +39,19 @@ Amnil.AccessControlManagementSystem.Workflows.Steps.CreateWorkflowEventStep, Amn
   },
   "Outputs": {
     "CreatedEventId": "step.WorkflowEventId"
+  }
+},
+{
+  "Id": "WaitForNewWorkflowEvent",
+  "StepType": "WorkflowCore.Primitives.WaitFor, WorkflowCore",
+  "NextStepId": "CompleteRecommendChainRoleChangeApprovalEvent",
+  "Inputs": {
+    "EventName": "\"APPLICATION_SUBMITTED\"",
+    "EventKey": "data[\"applicationWorkflowInstanceId\"]",
+    "EffectiveDate": "DateTime.UtcNow"
+  },
+  "Outputs": {
+    "RoleChangeApprovalResponseStatus": "step.EventData"
   }
 }
 ```
