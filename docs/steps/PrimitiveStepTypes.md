@@ -40,9 +40,11 @@ Schedules a future execution of a set of steps.
   "Do": [
     [
       {
-        "Id": "ScheduledStep1",
-        "StepType": "SomeStep",
-        "NextStepId": "ScheduledStep2"
+        "Id": "PrintStep1",
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Step:\" + data[\"stepId\"]"
+        }
       }
     ]
   ]
@@ -62,9 +64,11 @@ Repeatedly executes a set of steps until a condition is met.
   "Do": [
     [
       {
-        "Id": "RecurringStep",
-        "StepType": "SomeStep",
-        "NextStepId": "CheckCondition"
+        "Id": "PrintRecurringStep",
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Counter value: \" + data[\"Counter\"]"
+        }
       }
     ]
   ]
@@ -77,7 +81,6 @@ Conditional execution based on a boolean condition.
 {
   "Id": "ConditionalTask",
   "StepType": "WorkflowCore.Primitives.If, WorkflowCore",
-  "NextStepId": "DefaultPath",
   "Inputs": {
     "Condition": "data[\"someValue\"] > 10"
   },
@@ -85,8 +88,10 @@ Conditional execution based on a boolean condition.
     [
       {
         "Id": "TruePathStep",
-        "StepType": "SomeStep",
-        "NextStepId": "NextStep"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Condition met. someValue: \" + data[\"someValue\"]"
+        }
       }
     ]
   ]
@@ -106,8 +111,10 @@ Repeatedly executes steps while a condition is true.
     [
       {
         "Id": "LoopStep",
-        "StepType": "SomeStep",
-        "NextStepId": "IncrementCounter"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Loop iteration: \" + data[\"counter\"]"
+        }
       }
     ]
   ]
@@ -134,18 +141,22 @@ Executes multiple branches concurrently.
 {
   "Id": "ForEachStep",
   "StepType": "WorkflowCore.Primitives.ForEach, WorkflowCore",
-  "NextStepId": "ContinueAfterParallel",
   "Do": [
     [
       {
         "Id": "Branch1Step1",
-        "StepType": "SomeStep",
-        "NextStepId": "Branch1Step2"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "NextStepId": "Branch2Step1",
+        "Inputs": {
+          "Message": "\"Branch 1: Processing item - \" + context.Item"
+        }
       },
       {
         "Id": "Branch2Step1",
-        "StepType": "SomeStep",
-        "NextStepId": "Branch2Step2"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Branch 2: Processing item - \" + context.Item"
+        }
       }
     ]
   ]
@@ -158,19 +169,23 @@ Executes Single branch.
 {
   "Id": "ForEachStep",
   "StepType": "WorkflowCore.Primitives.ForEach, WorkflowCore",
-  "NextStepId": "ContinueAfterParallel",
   "RunParallel": "false",
   "Do": [
     [
       {
         "Id": "Branch1Step1",
-        "StepType": "SomeStep",
-        "NextStepId": "Branch1Step2"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "NextStepId": "Branch2Step1",
+        "Inputs": {
+          "Message": "\"Branch 1: Processing item - \" + context.Item"
+        }
       },
       {
         "Id": "Branch2Step1",
-        "StepType": "SomeStep",
-        "NextStepId": "Branch2Step2"
+        "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+        "Inputs": {
+          "Message": "\"Branch 2: Processing item - \" + context.Item"
+        }
       }
     ]
   ]
@@ -183,7 +198,6 @@ Introduces a delay in workflow execution.
 {
   "Id": "DelayTask",
   "StepType": "WorkflowCore.Primitives.Delay, WorkflowCore",
-  "NextStepId": "AfterDelay",
   "Inputs": {
     "Period": "TimeSpan.FromMinutes(5)"
   }
@@ -198,7 +212,10 @@ Many steps support error handling and compensation patterns:
 ```json
 {
   "Id": "RetryableStep",
-  "StepType": "SomeStep",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"Retrying step attempt...\""
+  },
   "RetryCount": 3,
   "RetryInterval": "TimeSpan.FromSeconds(5)"
 }
@@ -208,13 +225,16 @@ Many steps support error handling and compensation patterns:
 ```json
 {
   "Id": "CompensableStep",
-  "StepType": "SomeStep",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"Main step executed.\""
+  },
   "CompensateWith": [
     {
       "Id": "UndoStep",
-      "StepType": "CompensationStep",
+      "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
       "Inputs": {
-        "Parameter": "data[\"someValue\"]"
+        "Message": "\"Compensating action for failure.\""
       }
     }
   ]
