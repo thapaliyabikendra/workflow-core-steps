@@ -128,12 +128,12 @@ Multi-path branching based on conditions.
 }
 ```
 
-## 8. Parallel
+## 8. Parallel(ForEach)
 Executes multiple branches concurrently.
 ```json
 {
-  "Id": "ParallelExecution",
-  "StepType": "WorkflowCore.Primitives.Parallel, WorkflowCore",
+  "Id": "ForEachStep",
+  "StepType": "WorkflowCore.Primitives.ForEach, WorkflowCore",
   "NextStepId": "ContinueAfterParallel",
   "Do": [
     [
@@ -141,9 +141,7 @@ Executes multiple branches concurrently.
         "Id": "Branch1Step1",
         "StepType": "SomeStep",
         "NextStepId": "Branch1Step2"
-      }
-    ],
-    [
+      },
       {
         "Id": "Branch2Step1",
         "StepType": "SomeStep",
@@ -154,7 +152,32 @@ Executes multiple branches concurrently.
 }
 ```
 
-## 9. Delay
+## 9. Non-Parallel(ForEach)
+Executes Single branch.
+```json
+{
+  "Id": "ForEachStep",
+  "StepType": "WorkflowCore.Primitives.ForEach, WorkflowCore",
+  "NextStepId": "ContinueAfterParallel",
+  "RunParallel": "false",
+  "Do": [
+    [
+      {
+        "Id": "Branch1Step1",
+        "StepType": "SomeStep",
+        "NextStepId": "Branch1Step2"
+      },
+      {
+        "Id": "Branch2Step1",
+        "StepType": "SomeStep",
+        "NextStepId": "Branch2Step2"
+      }
+    ]
+  ]
+}
+```
+
+## 10. Delay
 Introduces a delay in workflow execution.
 ```json
 {
