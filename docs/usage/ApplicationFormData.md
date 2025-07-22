@@ -15,97 +15,312 @@ Here's a comprehensive example of `applicationFormData` for a role change applic
 
 ```json
 {
-  "applicationFormData": {
-    "roleChange": {
-      "roleCode": "SR_ENG",
-      "roleName": "Senior Engineer",
-      "roleDescription": "Senior level engineering role",
-      "roleType": "Technical",
-      "approvalRequired": true,
-      "effectiveDate": "2024-01-01"
-    },
-    "applicationDetails": {
-      "applicationType": "Role Change",
-      "priority": "Normal",
-      "justification": "Performance-based promotion",
-      "requestedBy": "john.doe@company.com",
-      "requestDate": "2023-12-15"
-    },
-    "validationRules": {
-      "requiresApproval": true,
-      "maxSalaryIncrease": 15,
-      "minimumTenure": 12
-    }
+  "applicationRole": {
+    "centralizedOperationControl": true,
+    "applicationName": "",
+    "defaultRole": " ",
+    "targetRole": " ",
+    "roleId": "",
+    "roleCode": "",
+    "applicationId": "",
+    "allowedPushSMSMax": "",
+    "applicationName": " "
   }
 }
 ```
 
 ### Common Form Types
 
-#### Role Change Applications
-For role change application workflows, the structure includes:
+#### Password Reset Applications
+
+For password reset application workflows, the structure includes:
 
 ```json
 {
-  "roleChange": {
-    "roleCode": "string",
-    "roleName": "string",
-    "roleDescription": "string"
+  "passwordResetForm": {
+    "remarks": "",
+    "userName": "",
+    "functionalTitle": " ",
+    "applicationName": " "
   }
 }
 ```
 
-#### Access Request Applications
-For access request application workflows, the structure includes:
+#### Password unlock Applications
+for password unlock application workflows, the structure includes:
+```json
+{
+  "passwordUnlockForm": {
+    "remarks": " ",
+    "userName": " ",
+    "functionalTitle": " ",
+    "applicationName": " "
+  }
+}
+```
+
+#### feems Temporary sol movement Applications
+For temporary sol movement application workflows, the structure includes:
 
 ```json
 {
-  "accessRequest": {
-    "requestedSystems": ["string"],
-    "accessLevel": "string",
-    "justification": "string"
+  "feemsSolMovement": {
+    "authority": "Maker",
+    "fromSolId": "",
+    "toSolId": "734"
+  }
+}
+```
+
+#### ccms sol movement applications
+for ccms sol movement application workflows, the structure includes:
+```json
+{
+  "ccmsSolMovement": {
+    "authority": "",
+    "custodian": "",
+    "fromSolId": "",
+    "toSolId": ""
+  }
+}
+```
+
+#### finacle temporary transfer applications
+for finacle temporary transfer applications, the structure includes:
+```json
+{
+  "applicationRole": {
+    "finacleUserIds": " ",
+    "applicationId": " ",
+    "currentSol": " ",
+    "currentSolId": " ",
+    "currentRoleId": " ",
+    "currentRoleDescription": " ",
+    "roleId": " ",
+    "roleCode": " ",
+    "allowTellerTransaction": " ",
+    "applicationName": " ",
+    "defaultRole": " ",
+    "targetRole": " ",
+    "allowTellerTransactionDisplay": "",
+    "useAppScopeRequestDates": true,
+    "requestedFrom": " ",
+    "requestedTo": " "
+  }
+}
+```
+
+#### user enable applications
+for user enable applications, the structure includes:
+
+```json
+{
+  "finacleUserEnableForm": {
+    "remarks": " ",
+    "userName": "  ",
+    "functionalTitle": "",
+    "applicationName": " "
+  }
+}
+```
+
+#### reversal applications
+for reversal applications, the structure includes:
+```json
+{
+  "reversalForm": {
+    "useAppScopeRequestDates": true,
+    "requestedFrom": "2025-07-29"
   }
 }
 ```
 
 ## Usage
 
-The `applicationFormData` is used by various workflow steps to access application context and form-specific information. Here are the key usage patterns:
+The `applicationFormData` is used by various workflow steps to access application context and form-specific information. Here are usage examples for the provided form types:
 
-### API Calls
+### API Calls and PrintMessageStep Usage Examples
 
-#### `CallApiStep`
-Uses application form data to populate API request parameters.
-
-Example from `README.md`:
-
+#### 1. applicationRole (Finacle Temporary Transfer)
+**API Call:**
 ```json
 {
-  "Id": "CallRoleChangeAPI",
+  "Id": "CallFinacleTransferAPI",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
   "Inputs": {
     "ApiRequest": {
-      "@roleCode": "data[\"applicationFormData\"].roleChange.roleCode",
-      "@roleName": "data[\"applicationFormData\"].roleChange.roleName"
+      "@finacleUserIds": "data[\"applicationFormData\"].applicationRole.finacleUserIds",
+      "@fromSolId": "data[\"applicationFormData\"].applicationRole.currentSolId",
+      "@toSolId": "data[\"applicationFormData\"].applicationRole.targetRole",
+      "@requestedFrom": "data[\"applicationFormData\"].applicationRole.requestedFrom",
+      "@requestedTo": "data[\"applicationFormData\"].applicationRole.requestedTo"
     }
   }
 }
 ```
-
-### Logging and Debugging
-
-#### `PrintMessageStep`
-Uses application form data for logging and debugging purposes.
-
-Example of printing application form data:
-
+**PrintMessageStep:**
 ```json
 {
-  "Id": "PrintApplicationFormData",
+  "Id": "PrintFinacleTransfer",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "NextStepId": "NextStep",
   "Inputs": {
-    "Message": "\"Role Change Application - Role Code: \" + data[\"applicationFormData\"].roleChange.roleCode + \", Role Name: \" + data[\"applicationFormData\"].roleChange.roleName + \", Requested By: \" + data[\"applicationFormData\"].applicationDetails.requestedBy"
+    "Message": "\"Finacle Transfer for \" + data[\"applicationFormData\"].applicationRole.finacleUserIds + \" from \" + data[\"applicationFormData\"].applicationRole.currentSolId + \" to \" + data[\"applicationFormData\"].applicationRole.targetRole + \" (\" + data[\"applicationFormData\"].applicationRole.requestedFrom + \" to \" + data[\"applicationFormData\"].applicationRole.requestedTo + \")\""
+  }
+}
+```
+
+#### 2. passwordResetForm
+**API Call:**
+```json
+{
+  "Id": "CallPasswordResetAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@userName": "data[\"applicationFormData\"].passwordResetForm.userName",
+      "@applicationName": "data[\"applicationFormData\"].passwordResetForm.applicationName",
+      "@remarks": "data[\"applicationFormData\"].passwordResetForm.remarks"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintPasswordReset",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"Password Reset for \" + data[\"applicationFormData\"].passwordResetForm.userName + \" on \" + data[\"applicationFormData\"].passwordResetForm.applicationName + \": \" + data[\"applicationFormData\"].passwordResetForm.remarks"
+  }
+}
+```
+
+#### 3. passwordUnlockForm
+**API Call:**
+```json
+{
+  "Id": "CallPasswordUnlockAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@userName": "data[\"applicationFormData\"].passwordUnlockForm.userName",
+      "@applicationName": "data[\"applicationFormData\"].passwordUnlockForm.applicationName",
+      "@remarks": "data[\"applicationFormData\"].passwordUnlockForm.remarks"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintPasswordUnlock",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"Password Unlock for \" + data[\"applicationFormData\"].passwordUnlockForm.userName + \" on \" + data[\"applicationFormData\"].passwordUnlockForm.applicationName + \": \" + data[\"applicationFormData\"].passwordUnlockForm.remarks"
+  }
+}
+```
+
+#### 4. feemsSolMovement
+**API Call:**
+```json
+{
+  "Id": "CallFeemsSolMovementAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@authority": "data[\"applicationFormData\"].feemsSolMovement.authority",
+      "@fromSolId": "data[\"applicationFormData\"].feemsSolMovement.fromSolId",
+      "@toSolId": "data[\"applicationFormData\"].feemsSolMovement.toSolId"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintFeemsSolMovement",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"FEEMS Sol Movement - Authority: \" + data[\"applicationFormData\"].feemsSolMovement.authority + \", From: \" + data[\"applicationFormData\"].feemsSolMovement.fromSolId + \", To: \" + data[\"applicationFormData\"].feemsSolMovement.toSolId"
+  }
+}
+```
+
+#### 5. ccmsSolMovement
+**API Call:**
+```json
+{
+  "Id": "CallCCMSSolMovementAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@authority": "data[\"applicationFormData\"].ccmsSolMovement.authority",
+      "@custodian": "data[\"applicationFormData\"].ccmsSolMovement.custodian",
+      "@fromSolId": "data[\"applicationFormData\"].ccmsSolMovement.fromSolId",
+      "@toSolId": "data[\"applicationFormData\"].ccmsSolMovement.toSolId"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintCCMSSolMovement",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"CCMS Sol Movement - Authority: \" + data[\"applicationFormData\"].ccmsSolMovement.authority + \", Custodian: \" + data[\"applicationFormData\"].ccmsSolMovement.custodian + \", From: \" + data[\"applicationFormData\"].ccmsSolMovement.fromSolId + \", To: \" + data[\"applicationFormData\"].ccmsSolMovement.toSolId"
+  }
+}
+```
+
+#### 6. finacleUserEnableForm
+**API Call:**
+```json
+{
+  "Id": "CallUserEnableAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@userName": "data[\"applicationFormData\"].finacleUserEnableForm.userName",
+      "@applicationName": "data[\"applicationFormData\"].finacleUserEnableForm.applicationName",
+      "@remarks": "data[\"applicationFormData\"].finacleUserEnableForm.remarks"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintUserEnable",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"User Enable for \" + data[\"applicationFormData\"].finacleUserEnableForm.userName + \" on \" + data[\"applicationFormData\"].finacleUserEnableForm.applicationName + \": \" + data[\"applicationFormData\"].finacleUserEnableForm.remarks"
+  }
+}
+```
+
+#### 7. reversalForm
+**API Call:**
+```json
+{
+  "Id": "CallReversalAPI",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "ApiRequest": {
+      "@useAppScopeRequestDates": "data[\"applicationFormData\"].reversalForm.useAppScopeRequestDates",
+      "@requestedFrom": "data[\"applicationFormData\"].reversalForm.requestedFrom"
+    }
+  }
+}
+```
+**PrintMessageStep:**
+```json
+{
+  "Id": "PrintReversal",
+  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "Inputs": {
+    "Message": "\"Reversal Request - Use App Scope Dates: \" + data[\"applicationFormData\"].reversalForm.useAppScopeRequestDates + \", Requested From: \" + data[\"applicationFormData\"].reversalForm.requestedFrom"
   }
 }
 ```
@@ -113,34 +328,26 @@ Example of printing application form data:
 ## How to Extract Data from Application Form Data
 
 ### Accessing Nested Properties
-The most common pattern is accessing deeply nested properties using dot notation:
 
 ```json
-"@roleCode": "data[\"applicationFormData\"].roleChange.roleCode"
-"@roleName": "data[\"applicationFormData\"].roleChange.roleName"
-"@requestedBy": "data[\"applicationFormData\"].applicationDetails.requestedBy"
+"@finacleUserId": "data[\"applicationFormData\"].applicationRole.finacleUserIds"
+"@userName": "data[\"applicationFormData\"].passwordResetForm.userName"
+"@authority": "data[\"applicationFormData\"].feemsSolMovement.authority"
+"@custodian": "data[\"applicationFormData\"].ccmsSolMovement.custodian"
+"@requestedFrom": "data[\"applicationFormData\"].applicationRole.requestedFrom"
 ```
 
 ### String Interpolation
-Application form data is often used in string interpolation for messages and API requests:
 
 ```json
-"Message": "\"Role Change Application for \" + data[\"applicationFormData\"].roleChange.roleName + \" (\" + data[\"applicationFormData\"].roleChange.roleCode + \") requested by \" + data[\"applicationFormData\"].applicationDetails.requestedBy"
+"Message": "\"Finacle Transfer for \" + data[\"applicationFormData\"].applicationRole.finacleUserIds + \" from \" + data[\"applicationFormData\"].applicationRole.currentSolId + \" to \" + data[\"applicationFormData\"].applicationRole.targetRole + \" (\" + data[\"applicationFormData\"].applicationRole.requestedFrom + \" to \" + data[\"applicationFormData\"].applicationRole.requestedTo + \")"
+"Message": "\"Password Reset for \" + data[\"applicationFormData\"].passwordResetForm.userName + \" on \" + data[\"applicationFormData\"].passwordResetForm.applicationName + \": \" + data[\"applicationFormData\"].passwordResetForm.remarks"
 ```
 
 ### Complete Object Access
-Sometimes the entire application form data object is passed or logged:
 
 ```json
 "Message": "\"Complete Application Form Data: \" + data[\"applicationFormData\"]"
-```
-
-### Array Access
-For arrays within application form data (like requested systems):
-
-```json
-"firstSystem": "data[\"applicationFormData\"].accessRequest.requestedSystems[0]"
-"systemCount": "data[\"applicationFormData\"].accessRequest.requestedSystems.length"
 ```
 
 ## Form-Specific Structures

@@ -8,86 +8,187 @@ The `operationFormData` is expected to be present in the `data` object available
 
 ## Structure
 
-The `operationFormData` is a JObject that contains nested form structures. Based on the usage patterns found in the codebase, it typically includes:
+The `operationFormData` is a JObject that contains nested form structures. Below are real examples for different workflow types:
 
-### Complete Sample Structure
-Here's a comprehensive example of `operationFormData` for a role change operation:
-
-```json
-{
-  "operationFormData": {
-    "userAccountForm": {
-      "userAccountDetails": {
-        "employeeId": "EMP001",
-        "userAccountName": "john.doe@company.com",
-        "currentfunctionalTitle": "Software Engineer",
-        "department": "Engineering",
-        "location": "New York",
-        "managerId": "MGR001",
-        "hireDate": "2020-01-15"
-      }
-    },
-    "roleChangeOperationForm": {
-      "newFunctionalTitle": "Senior Software Engineer",
-      "effectiveDate": "2024-01-01",
-      "reason": "Performance-based promotion",
-      "employeeDetails": {
-        "employeeName": "John Doe",
-        "currentfunctionalTitle": "Software Engineer",
-        "currentSalary": 75000,
-        "proposedSalary": 85000,
-        "approvalLevel": "Manager"
-      },
-      "approvalChain": [
-        {
-          "approverId": "MGR001",
-          "approverName": "Jane Smith",
-          "approverRole": "Engineering Manager",
-          "approvalOrder": 1
-        },
-        {
-          "approverId": "DIR001",
-          "approverName": "Bob Johnson",
-          "approverRole": "Engineering Director",
-          "approvalOrder": 2
-        }
-      ]
-    }
-  }
-}
-```
-
-### Common Form Types
-
-#### Role Change Operations
-For role change workflows, the structure includes:
-
+### IT Operation Example
 ```json
 {
   "userAccountForm": {
+    "userAccountIdentifier": "89",
+    "userAccountTypeId": "3a1b04e6",
     "userAccountDetails": {
-      "employeeId": "string",
-      "userAccountName": "string", 
-      "currentfunctionalTitle": "string"
-    }
-  },
-  "roleChangeOperationForm": {
-    "newFunctionalTitle": "string",
-    "employeeDetails": {
-      "employeeName": "string",
-      "currentfunctionalTitle": "string"
+      "employeeId": "8",
+      "branch": "Branch",
+      "branchId": "3",
+      "department": "Business",
+      "userAccountName": "K.C.",
+      "staffId": "800",
+      "currentfunctionalTitle": "BRANCH MANAGER"
     }
   }
 }
 ```
 
-#### Employee Transfer Operations
-For employee transfer workflows, the structure includes:
-
+### Temporary Transfer Example
 ```json
 {
-  "operationForm": {
-    "employeeName": "string"
+  "userAccountForm": {
+    "userAccountIdentifier": "1",
+    "userAccountTypeId": "3a1",
+    "userAccountDetails": {
+      "employeeId": "13",
+      "branch": "Branch",
+      "branchId": "7",
+      "department": "Business",
+      "userAccountName": "Karna",
+      "staffId": "11",
+      "currentfunctionalTitle": "CUSTOMER SERVICE"
+    }
+  },
+  "nmbRoleChangeForm": {
+    "userAccountIdentifier": "13",
+    "userAccountTypeId": "62a0-5ae8-0aa9fc0a2ef1",
+    "userAccountDetails": {
+      "employeeId": "13",
+      "branch": "Branch",
+      "branchId": "7",
+      "department": "Business",
+      "userAccountName": "Karna",
+      "staffId": "13",
+      "currentfunctionalTitle": "CUSTOMER SERVICE"
+    },
+    "destinationBranch": "Branch",
+    "destinationFunctionalTitle": "Business",
+    "transferFrom": "2025-07-23 05:45:00",
+    "transferTo": "2025-08-08 05:45:00"
+  }
+}
+```
+
+### MBL Role Change Example
+```json
+{
+  "userAccountForm": {
+    "userAccountIdentifier": "2804",
+    "userAccountTypeId": "9890-511497e49ae8",
+    "userAccountDetails": {
+      "id": "k3",
+      "employeeId": "2804",
+      "branch": "Aabireni",
+      "branchCode": "14",
+      "userAccountName": "Shrestha",
+      "ein": "EMP17",
+      "staffId": "S-02",
+      "solId": "1",
+      "userEmail": "sajesh.@yaop.com",
+      "designation": "Assistant General Manager",
+      "currentfunctionalTitle": "SRM Business",
+      "currentfunctionalTitleId": "10"
+    }
+  },
+  "roleChangeOperationForm": {
+    "userAccountIdentifier": "24",
+    "userAccountTypeId": "1934-9890-511497e49ae8",
+    "userAccountDetails": {
+      "id": "k31",
+      "employeeId": "204",
+      "branch": "Aabunkhaireni",
+      "branchCode": "14",
+      "userAccountName": "SShrestha",
+      "ein": "EMP17",
+      "staffId": "S-72",
+      "solId": "17",
+      "userEmail": "sajesh.shrestha@yaop.com",
+      "designation": "Assistant General Manager",
+      "currentfunctionalTitle": "SRM Business",
+      "currentfunctionalTitleId": "10"
+    },
+    "requestedFrom": "2025-07-18 05:45:00",
+    "requestedTo": "2025-07-25 05:45:00",
+    "newfunctionalTitleId": "2",
+    "newfunctionalTitle": "Branch Manager"
+  }
+}
+```
+
+### Permanent Transfer Example
+```json
+{
+  "userAccountForm": {
+    "userAccountIdentifier": "",
+    "userAccountTypeId": "",
+    "userAccountDetails": {
+      "employeeId": "",
+      "branch": " ",
+      "branchId": "",
+      "department": " ",
+      "userAccountName": "  ",
+      "staffId": "",
+      "currentfunctionalTitle": " "
+    }
+  },
+  "nmbRoleChangeForm": {
+    "userAccountIdentifier": "",
+    "userAccountTypeId": "",
+    "userAccountDetails": {
+      "employeeId": "",
+      "branch": " ",
+      "branchId": "",
+      "department": " ",
+      "userAccountName": " ",
+      "staffId": "",
+      "currentfunctionalTitle": "  "
+    },
+    "destinationBranch": " ",
+    "destinationDepartment": "",
+    "destinationFunctionalTitle": " ",
+    "transferDate": " "
+  }
+}
+```
+
+### Temporary Transfer Reversal Example
+```json
+{
+  "userAccountForm": {
+    "userAccountIdentifier": "",
+    "userAccountTypeId": "",
+    "userAccountDetails": {
+      "id": "",
+      "employeeId": "",
+      "branch": "",
+      "branchCode": "",
+      "userAccountName": "",
+      "ein": "",
+      "staffId": "",
+      "solId": "",
+      "userEmail": "",
+      "designation": "T",
+      "currentfunctionalTitle": "",
+      "currentfunctionalTitleId": ""
+    }
+  },
+  "roleChangeOperationForm": {
+    "userAccountIdentifier": "",
+    "userAccountTypeId": "",
+    "userAccountDetails": {
+      "id": "",
+      "employeeId": "",
+      "branch": "",
+      "branchCode": "",
+      "userAccountName": "",
+      "ein": "",
+      "staffId": "",
+      "solId": "",
+      "userEmail": "",
+      "designation": "",
+      "currentfunctionalTitle": "",
+      "currentfunctionalTitleId": ""
+    },
+    "requestedFrom": "",
+    "requestedTo": "",
+    "newfunctionalTitleId": "",
+    "newfunctionalTitle": ""
   }
 }
 ```
@@ -101,8 +202,7 @@ The `operationFormData` is used by various workflow steps to access operational 
 #### `CallApiStep`
 Uses operation form data to populate API request parameters.
 
-Example from `docs/samples/RoleChangeApprovalWorkflow.md`:
-
+**Example for MBL Role Change:**
 ```json
 {
   "Id": "CallRoleChangeAPI",
@@ -112,7 +212,9 @@ Example from `docs/samples/RoleChangeApprovalWorkflow.md`:
       "@employeeId": "data[\"operationFormData\"].userAccountForm.userAccountDetails.employeeId",
       "@employeeName": "data[\"operationFormData\"].userAccountForm.userAccountDetails.userAccountName",
       "@currentfunctionalTitle": "data[\"operationFormData\"].userAccountForm.userAccountDetails.currentfunctionalTitle",
-      "@newFunctionalTitle": "data[\"operationFormData\"].roleChangeOperationForm.newFunctionalTitle"
+      "@newFunctionalTitle": "data[\"operationFormData\"].roleChangeOperationForm.newfunctionalTitle",
+      "@requestedFrom": "data[\"operationFormData\"].roleChangeOperationForm.requestedFrom",
+      "@requestedTo": "data[\"operationFormData\"].roleChangeOperationForm.requestedTo"
     }
   }
 }
@@ -123,27 +225,14 @@ Example from `docs/samples/RoleChangeApprovalWorkflow.md`:
 #### `PrintMessageStep`
 Uses operation form data for logging and debugging purposes.
 
-Example of printing operation form data:
-
+**Example for Temporary Transfer:**
 ```json
 {
   "Id": "PrintOperationFormData",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
   "NextStepId": "NextStep",
   "Inputs": {
-    "Message": "\"Role Change Request - Employee: \" + data[\"operationFormData\"].roleChangeOperationForm.employeeDetails.employeeName + \", From: \" + data[\"operationFormData\"].roleChangeOperationForm.employeeDetails.currentfunctionalTitle + \", To: \" + data[\"operationFormData\"].roleChangeOperationForm.newFunctionalTitle + \", Effective Date: \" + data[\"operationFormData\"].roleChangeOperationForm.effectiveDate"
-  }
-}
-```
-
-Example from `docs/samples/EmployeeTransferWorkflow.md`:
-
-```json
-{
-  "Id": "BPMAPICheckerApprovedLogger",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "Message": "\"Processing - Checker Approved: BPM API Approval Response Event received \" + data[\"operationFormData\"]"
+    "Message": "\"Temporary Transfer - Employee: \" + data[\"operationFormData\"].userAccountForm.userAccountDetails.userAccountName + \", From: \" + data[\"operationFormData\"].nmbRoleChangeForm.userAccountDetails.currentfunctionalTitle + \", To: \" + data[\"operationFormData\"].nmbRoleChangeForm.destinationFunctionalTitle + \", Transfer From: \" + data[\"operationFormData\"].nmbRoleChangeForm.transferFrom + \", Transfer To: \" + data[\"operationFormData\"].nmbRoleChangeForm.transferTo"
   }
 }
 ```
@@ -155,15 +244,17 @@ The most common pattern is accessing deeply nested properties using dot notation
 
 ```json
 "@employeeId": "data[\"operationFormData\"].userAccountForm.userAccountDetails.employeeId"
-"@employeeName": "data[\"operationFormData\"].roleChangeOperationForm.employeeDetails.employeeName"
-"@newTitle": "data[\"operationFormData\"].roleChangeOperationForm.newFunctionalTitle"
+"@employeeName": "data[\"operationFormData\"].userAccountForm.userAccountDetails.userAccountName"
+"@newTitle": "data[\"operationFormData\"].roleChangeOperationForm.newfunctionalTitle"
+"@requestedFrom": "data[\"operationFormData\"].roleChangeOperationForm.requestedFrom"
+"@requestedTo": "data[\"operationFormData\"].roleChangeOperationForm.requestedTo"
 ```
 
 ### String Interpolation
 Operation form data is often used in string interpolation for messages and API requests:
 
 ```json
-"Message": "\"Role Change Request for \" + data[\"operationFormData\"].roleChangeOperationForm.employeeDetails.employeeName + \" from \" + data[\"operationFormData\"].roleChangeOperationForm.employeeDetails.currentfunctionalTitle + \" to \" + data[\"operationFormData\"].roleChangeOperationForm.newFunctionalTitle"
+"Message": "\"Role Change Request for \" + data[\"operationFormData\"].userAccountForm.userAccountDetails.userAccountName + \" from \" + data[\"operationFormData\"].userAccountForm.userAccountDetails.currentfunctionalTitle + \" to \" + data[\"operationFormData\"].roleChangeOperationForm.newfunctionalTitle + \" (\" + data[\"operationFormData\"].roleChangeOperationForm.requestedFrom + \" to \" + data[\"operationFormData\"].roleChangeOperationForm.requestedTo + \")"
 ```
 
 ### Complete Object Access
@@ -183,20 +274,22 @@ For arrays within operation form data (like approval chains):
 
 ## Form-Specific Structures
 
-### Role Change Operation Form
+### MBL Role Change Operation Form
 Contains user account details and role change information:
-
 - `userAccountForm.userAccountDetails.employeeId`
 - `userAccountForm.userAccountDetails.userAccountName`
 - `userAccountForm.userAccountDetails.currentfunctionalTitle`
-- `roleChangeOperationForm.newFunctionalTitle`
-- `roleChangeOperationForm.employeeDetails.employeeName`
-- `roleChangeOperationForm.employeeDetails.currentfunctionalTitle`
+- `roleChangeOperationForm.newfunctionalTitle`
+- `roleChangeOperationForm.requestedFrom`
+- `roleChangeOperationForm.requestedTo`
 
-### Employee Transfer Operation Form
+### Temporary Transfer Operation Form
 Contains employee transfer information:
-
-- `operationForm.employeeName`
+- `userAccountForm.userAccountDetails.userAccountName`
+- `nmbRoleChangeForm.userAccountDetails.currentfunctionalTitle`
+- `nmbRoleChangeForm.destinationFunctionalTitle`
+- `nmbRoleChangeForm.transferFrom`
+- `nmbRoleChangeForm.transferTo`
 
 ## Relationship with Application Forms
 
