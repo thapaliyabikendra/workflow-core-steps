@@ -14,4 +14,3 @@ See the [README](./steps/README.md) for a list of available steps.
 * [CurrentUserDetail](./usage/CurrentUserDetail.md)
 * [OperationFormData](./usage/OperationFormData.md)
 * [ApplicationFormData](./usage/ApplicationFormData.md)
-
