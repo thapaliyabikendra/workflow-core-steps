@@ -1,4 +1,3 @@
-
 # OperationalWorkflowInstanceId
 
 The `operationalWorkflowInstanceId` is a unique identifier for an instance of an operational workflow. It is typically passed as part of the data payload to a workflow instance when it is started.

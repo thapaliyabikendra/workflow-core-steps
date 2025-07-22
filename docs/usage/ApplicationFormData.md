@@ -139,17 +139,16 @@ for reversal applications, the structure includes:
 
 The `applicationFormData` is used by various workflow steps to access application context and form-specific information. Here are usage examples for the provided form types:
 
-### API Calls and PrintMessageStep Usage Examples
+### API Calls
 
-#### 1. applicationRole (Finacle Temporary Transfer)
-**API Call:**
+#### 1. Finacle Temporary Transfer (using `applicationRole`)
 ```json
 {
   "Id": "CallFinacleTransferAPI",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
   "Inputs": {
     "ApiRequest": {
-      "@finacleUserIds": "data[\"applicationFormData\"].applicationRole.finacleUserIds",
+      "@finacleUserId": "data[\"applicationFormData\"].applicationRole.finacleUserIds",
       "@fromSolId": "data[\"applicationFormData\"].applicationRole.currentSolId",
       "@toSolId": "data[\"applicationFormData\"].applicationRole.targetRole",
       "@requestedFrom": "data[\"applicationFormData\"].applicationRole.requestedFrom",
@@ -158,19 +157,8 @@ The `applicationFormData` is used by various workflow steps to access applicatio
   }
 }
 ```
-**PrintMessageStep:**
-```json
-{
-  "Id": "PrintFinacleTransfer",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "Message": "\"Finacle Transfer for \" + data[\"applicationFormData\"].applicationRole.finacleUserIds + \" from \" + data[\"applicationFormData\"].applicationRole.currentSolId + \" to \" + data[\"applicationFormData\"].applicationRole.targetRole + \" (\" + data[\"applicationFormData\"].applicationRole.requestedFrom + \" to \" + data[\"applicationFormData\"].applicationRole.requestedTo + \")\""
-  }
-}
-```
 
-#### 2. passwordResetForm
-**API Call:**
+#### 2. Password Reset (using `passwordResetForm`)
 ```json
 {
   "Id": "CallPasswordResetAPI",
@@ -184,45 +172,8 @@ The `applicationFormData` is used by various workflow steps to access applicatio
   }
 }
 ```
-**PrintMessageStep:**
-```json
-{
-  "Id": "PrintPasswordReset",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "Message": "\"Password Reset for \" + data[\"applicationFormData\"].passwordResetForm.userName + \" on \" + data[\"applicationFormData\"].passwordResetForm.applicationName + \": \" + data[\"applicationFormData\"].passwordResetForm.remarks"
-  }
-}
-```
 
-#### 3. passwordUnlockForm
-**API Call:**
-```json
-{
-  "Id": "CallPasswordUnlockAPI",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "ApiRequest": {
-      "@userName": "data[\"applicationFormData\"].passwordUnlockForm.userName",
-      "@applicationName": "data[\"applicationFormData\"].passwordUnlockForm.applicationName",
-      "@remarks": "data[\"applicationFormData\"].passwordUnlockForm.remarks"
-    }
-  }
-}
-```
-**PrintMessageStep:**
-```json
-{
-  "Id": "PrintPasswordUnlock",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "Message": "\"Password Unlock for \" + data[\"applicationFormData\"].passwordUnlockForm.userName + \" on \" + data[\"applicationFormData\"].passwordUnlockForm.applicationName + \": \" + data[\"applicationFormData\"].passwordUnlockForm.remarks"
-  }
-}
-```
-
-#### 4. feemsSolMovement
-**API Call:**
+#### 3. FEEMS Temporary Sol Movement (using `feemsSolMovement`)
 ```json
 {
   "Id": "CallFeemsSolMovementAPI",
@@ -236,89 +187,51 @@ The `applicationFormData` is used by various workflow steps to access applicatio
   }
 }
 ```
-**PrintMessageStep:**
+
+### Logging and Debugging
+
+#### 1. PrintMessageStep for Password Unlock
 ```json
 {
-  "Id": "PrintFeemsSolMovement",
+  "Id": "PrintPasswordUnlockForm",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "NextStep",
   "Inputs": {
-    "Message": "\"FEEMS Sol Movement - Authority: \" + data[\"applicationFormData\"].feemsSolMovement.authority + \", From: \" + data[\"applicationFormData\"].feemsSolMovement.fromSolId + \", To: \" + data[\"applicationFormData\"].feemsSolMovement.toSolId"
+    "Message": "\"Password Unlock Request - User: \" + data[\"applicationFormData\"].passwordUnlockForm.userName + \", Application: \" + data[\"applicationFormData\"].passwordUnlockForm.applicationName + \", Remarks: \" + data[\"applicationFormData\"].passwordUnlockForm.remarks"
   }
 }
 ```
 
-#### 5. ccmsSolMovement
-**API Call:**
-```json
-{
-  "Id": "CallCCMSSolMovementAPI",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "ApiRequest": {
-      "@authority": "data[\"applicationFormData\"].ccmsSolMovement.authority",
-      "@custodian": "data[\"applicationFormData\"].ccmsSolMovement.custodian",
-      "@fromSolId": "data[\"applicationFormData\"].ccmsSolMovement.fromSolId",
-      "@toSolId": "data[\"applicationFormData\"].ccmsSolMovement.toSolId"
-    }
-  }
-}
-```
-**PrintMessageStep:**
+#### 2. PrintMessageStep for CCMS Sol Movement
 ```json
 {
   "Id": "PrintCCMSSolMovement",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "NextStep",
   "Inputs": {
     "Message": "\"CCMS Sol Movement - Authority: \" + data[\"applicationFormData\"].ccmsSolMovement.authority + \", Custodian: \" + data[\"applicationFormData\"].ccmsSolMovement.custodian + \", From: \" + data[\"applicationFormData\"].ccmsSolMovement.fromSolId + \", To: \" + data[\"applicationFormData\"].ccmsSolMovement.toSolId"
   }
 }
 ```
 
-#### 6. finacleUserEnableForm
-**API Call:**
+#### 3. PrintMessageStep for User Enable
 ```json
 {
-  "Id": "CallUserEnableAPI",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "ApiRequest": {
-      "@userName": "data[\"applicationFormData\"].finacleUserEnableForm.userName",
-      "@applicationName": "data[\"applicationFormData\"].finacleUserEnableForm.applicationName",
-      "@remarks": "data[\"applicationFormData\"].finacleUserEnableForm.remarks"
-    }
-  }
-}
-```
-**PrintMessageStep:**
-```json
-{
-  "Id": "PrintUserEnable",
+  "Id": "PrintUserEnableForm",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "NextStep",
   "Inputs": {
-    "Message": "\"User Enable for \" + data[\"applicationFormData\"].finacleUserEnableForm.userName + \" on \" + data[\"applicationFormData\"].finacleUserEnableForm.applicationName + \": \" + data[\"applicationFormData\"].finacleUserEnableForm.remarks"
+    "Message": "\"User Enable Request - User: \" + data[\"applicationFormData\"].finacleUserEnableForm.userName + \", Application: \" + data[\"applicationFormData\"].finacleUserEnableForm.applicationName + \", Remarks: \" + data[\"applicationFormData\"].finacleUserEnableForm.remarks"
   }
 }
 ```
 
-#### 7. reversalForm
-**API Call:**
+#### 4. PrintMessageStep for Reversal
 ```json
 {
-  "Id": "CallReversalAPI",
-  "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.CallApiStep, Amnil.AccessControlManagementSystem.Application",
-  "Inputs": {
-    "ApiRequest": {
-      "@useAppScopeRequestDates": "data[\"applicationFormData\"].reversalForm.useAppScopeRequestDates",
-      "@requestedFrom": "data[\"applicationFormData\"].reversalForm.requestedFrom"
-    }
-  }
-}
-```
-**PrintMessageStep:**
-```json
-{
-  "Id": "PrintReversal",
+  "Id": "PrintReversalForm",
   "StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.PrintMessageStep, Amnil.AccessControlManagementSystem.Application",
+  "NextStepId": "NextStep",
   "Inputs": {
     "Message": "\"Reversal Request - Use App Scope Dates: \" + data[\"applicationFormData\"].reversalForm.useAppScopeRequestDates + \", Requested From: \" + data[\"applicationFormData\"].reversalForm.requestedFrom"
   }
