@@ -250,7 +250,7 @@
 
 [Output:	29](#output:-19)
 
-      25\. GetRecordByIdOnNocoDBStep.cs	29
+      25\. GetNocoDBRecordSteps.cs	29
 
 [Purpose:	29](#purpose:-19)
 
@@ -260,7 +260,7 @@
 
 [Example Workflow JSON:	29](#example-workflow-json:-19)
 
-      26\. GetRecordOnNocoDBStep.cs	29
+      26\. GetNocoDBRecordsSteps.cs	29
 
 [Purpose:	29](#purpose:-19)
 
@@ -307,6 +307,26 @@
 [Output:	29](#output:-19)
 
       31\. UpdateRecordOnNocoDBStep.cs	29
+
+[Purpose:	29](#purpose:-19)
+
+[Input:	29](#input:-19)
+
+[Output:	29](#output:-19)
+
+[Example Workflow JSON:	29](#example-workflow-json:-19)
+
+      32\. StartChildAppTasksStep.cs	29
+
+[Purpose:	29](#purpose:-19)
+
+[Input:	29](#input:-19)
+
+[Output:	29](#output:-19)
+
+[Example Workflow JSON:	29](#example-workflow-json:-19)
+
+      33\. ExecuteBusinessRuleStep.cs	29
 
 [Purpose:	29](#purpose:-19)
 
@@ -725,6 +745,8 @@ Updates the stage of an application task within the workflow.
   `"Outputs": {}`
 
 `}`
+
+### 
 
 ### 
 
@@ -1334,6 +1356,8 @@ Updates the stage of an operation task in the workflow.
 
 ### 
 
+### 
+
 ### **19\. UpdateWorkflowEventStatusStep.cs** {#19.-updateworkfloweventstatusstep.cs}
 
 #### **Purpose:** {#purpose:-18}
@@ -1704,7 +1728,7 @@ Creates a workflow event tied to a specific application and optionally an operat
 **Output:**  
  *None.*
 
-**25\. GetRecordByIdOnNocoDBStep.cs**
+**25\. GetNocoDBRecordSteps.cs**
 
 **Purpose:**  
 Retrieves a single record from a NocoDB table by its unique identifier.
@@ -1786,7 +1810,7 @@ Retrieves a single record from a NocoDB table by its unique identifier.
 
  
 
-**26\. GetRecordOnNocoDBStep.cs**  
+**26\. GetNocoDbRecordsSteps.cs**  
  
 
 **Purpose:**  
@@ -1797,6 +1821,11 @@ Fetches records from a specified NocoDB table using custom filter parameters.
 * TableName (string): The name of the NocoDB table from which to retrieve records.
 
 * NocoDbFilterParams (NocoDbFilterParams): The filtering parameters used to query the records from NocoDB. This can include filters, sorting, pagination, and other query options.
+
+* ResultType: (string, optional): Type of result to return. Default is "list". Options:
+  **`"list"`: Returns all matching records as an array
+  ** `"first"`: Returns only the first matching record
+  ** `"last"`: Returns only the last matching record
 
 **Output:**
 
@@ -1842,8 +1871,8 @@ Fetches records from a specified NocoDB table using custom filter parameters.
 
           `"viewId": ""`
 
-        `}`
-
+        `},`
+        `"ResultType:" "\"List\""`
     `},`
 
       `"Outputs": {`
@@ -2249,5 +2278,67 @@ Updates an existing record in a NocoDB table using the IDynamicTableProxyAppServ
     `}`
 
   `]`
-
 `}`
+
+   **33\. Start Child App Tasks Step
+
+  ** Purpose: ** Retrieves child workflow configurations for a given operation workflow configuration ID and returns them as structured data.
+
+  ** Inputs **
+
+  * `OperationWorkflowConfigurationId` (string, required): The GUID of the operation workflow configuration to find child configurations for
+
+  ** Outputs **
+  
+  * `Data` (JObject, optional): Contains the child workflow configurations with total count and data array
+
+  `{`
+
+  `Example:`
+
+  `{`
+    `"Id": "GetChildWorkflows",`
+    `"StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.StartChildAppTasksStep, Amnil.AccessControlManagementSystem.Application",`
+    `"NextStepId": "ProcessChildWorkflows",`
+    `"Inputs": {`
+      `"OperationWorkflowConfigurationId": "\"550e8400-e29b-41d4-a716-446655440000\""`
+    `},`
+    `"Outputs": {`
+     `"childWorkflows": "step.Data"`
+    `}`
+  `}`
+ 
+
+  **33\. ExecuteBusinessRuleStep
+
+  ** Purpose: ** Executes business rules using the business rule engine service to apply dynamic business logic and validation during workflow execution.
+
+  ** Inputs **
+
+  * `RuleName` (string): The name of the business rule to execute
+  * `Input1` (JObject): The input data object to pass to the business rule
+
+  ** Outputs **
+  
+  * `Result` (BusinessRuleResultDto): The result returned from the business rule execution
+
+  `Example`
+
+  `{`
+    `"Id": "GenerateAndValidateUserId",`
+    `"StepType": "Amnil.AccessControlManagementSystem.Workflows.Steps.ExecuteBusinessRuleStep, Amnil.AccessControlManagementSystem.Application",`
+    `"Inputs": {`
+      `"RuleName": "ECC_RTG_SIPS_USERID_GENERATION",`
+      `"Input1": {`
+        `"staffId": "data[\"staffId\"]",`
+        `"firstName": "data[\"firstName\"]",`
+        `"lastName": "data[\"lastName\"]"`
+      `}`
+    `},`
+    `"Outputs": {`
+      `"GeneratedUserId": "step.Result.Data?.userId",`
+      `"IsValid": "step.Result.Success",`
+      `"ValidationErrors": "step.Result.ValidationMessages",`
+      `"UserIdWarnings": "step.Result.Warnings"`
+    `}`
+  `}`
